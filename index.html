@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bônus 5 — 7 Pequenos Passos Para Voltar a Viver | Ana Luiza Medeiros</title>
+<style>
+  :root {
+    --bg:#FBF8F3; --terracota:#C4785A; --terracota-light:#F0DDD5;
+    --salvia:#7A9B76; --salvia-light:#E8F0E6; --grafite:#2C2C2A;
+    --cream:#F5EFE6; --linha:#D9BFB5; --white:#ffffff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--grafite);font-family:Arial,'DM Sans',sans-serif;font-size:16px;line-height:1.7}
+
+  .header{background:var(--grafite);color:var(--white);padding:36px 24px 28px;text-align:center}
+  .header .badge{display:inline-block;background:var(--terracota);color:var(--white);font-size:11px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:14px}
+  .header h1{font-family:Georgia,serif;font-size:clamp(22px,5vw,34px);font-weight:normal;font-style:italic;color:var(--terracota-light);line-height:1.3;margin-bottom:8px}
+  .header p{color:#aaa;font-size:13px}
+
+  .nav{position:sticky;top:0;z-index:100;background:var(--grafite);border-top:1px solid #3a3a38;display:flex;overflow-x:auto;scrollbar-width:none}
+  .nav::-webkit-scrollbar{display:none}
+  .nav a{flex-shrink:0;color:#aaa;text-decoration:none;padding:12px 16px;font-size:13px;white-space:nowrap;transition:color .2s,border-bottom .2s;border-bottom:2px solid transparent}
+  .nav a:hover,.nav a.active{color:var(--terracota-light);border-bottom:2px solid var(--terracota)}
+
+  .progress-bar-wrap{background:#e0dbd4;height:5px;position:sticky;top:43px;z-index:99}
+  .progress-bar-fill{height:5px;background:linear-gradient(90deg,var(--terracota),var(--salvia));width:0%;transition:width .5s ease}
+
+  .section{padding:48px 20px;max-width:720px;margin:0 auto}
+  .section+.section{border-top:1px solid var(--linha)}
+
+  /* PROGRESSO */
+  .progresso-wrap{background:var(--white);border-radius:14px;padding:22px 20px;box-shadow:0 1px 6px rgba(0,0,0,.07);margin-bottom:32px}
+  .progresso-titulo{font-size:13px;font-weight:bold;color:var(--grafite);margin-bottom:14px;text-transform:uppercase;letter-spacing:1px}
+  .progresso-linha{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .prog-label{font-size:12px;color:#888;min-width:64px}
+  .prog-dots{display:flex;gap:5px}
+  .prog-dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--linha);background:var(--white);transition:all .3s;cursor:pointer;flex-shrink:0}
+  .prog-dot.feita{background:var(--terracota);border-color:var(--terracota)}
+  .prog-dot.atual{background:var(--salvia);border-color:var(--salvia)}
+
+  /* INTRO */
+  .intro-card{background:var(--grafite);border-radius:16px;padding:32px 28px;margin-bottom:28px}
+  .intro-card h2{font-family:Georgia,serif;font-size:22px;color:var(--terracota-light);font-style:italic;margin-bottom:20px}
+  .intro-card p{color:#ccc;margin-bottom:12px;font-size:15px;line-height:1.8}
+  .intro-card p:last-child{margin-bottom:0;color:var(--terracota-light);font-style:italic;font-size:16px}
+
+  .how-to{display:grid;gap:12px;margin-top:20px}
+  .how-step{display:flex;gap:16px;align-items:flex-start;background:var(--white);border-radius:10px;padding:14px 16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+  .how-num{background:var(--terracota);color:var(--white);font-weight:bold;font-size:13px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .how-step p{font-size:14px;color:#555}
+
+  /* PRÁTICA CARD */
+  .pratica-wrap{background:var(--white);border-radius:16px;padding:28px 24px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:8px}
+  .pratica-header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+  .pratica-num{background:var(--terracota);color:var(--white);font-family:Georgia,serif;font-size:22px;font-style:italic;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .pratica-titulo h2{font-family:Georgia,serif;font-size:19px;color:var(--grafite)}
+  .pratica-titulo span{font-size:12px;color:var(--terracota)}
+  .pratica-desc{background:var(--cream);border-radius:10px;padding:16px 18px;margin-bottom:20px;font-size:14px;color:#555;line-height:1.7}
+  .pratica-instrucao{font-style:italic;color:#666;margin-bottom:20px;font-size:14px;line-height:1.7;border-left:3px solid var(--linha);padding-left:14px}
+
+  /* DATA/HORA */
+  .data-hora{display:flex;gap:12px;margin-bottom:20px}
+  .data-hora input{flex:1;border:1px solid var(--linha);border-radius:8px;padding:10px 12px;font-size:14px;font-family:Arial,sans-serif;background:var(--bg);color:var(--grafite);outline:none}
+  .data-hora input:focus{border-color:var(--terracota)}
+
+  /* TERMÔMETRO */
+  .termometro-wrap{margin-bottom:20px}
+  .termo-label{font-size:13px;font-weight:bold;color:var(--grafite);margin-bottom:8px}
+  .termo-scale{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:4px}
+  .termo-btn{width:36px;height:36px;border-radius:8px;border:2px solid var(--linha);background:var(--white);font-size:13px;font-weight:bold;cursor:pointer;transition:all .15s;color:#888}
+  .termo-btn:hover{border-color:var(--terracota);color:var(--terracota)}
+  .termo-btn.sel-antes{background:var(--terracota);border-color:var(--terracota);color:var(--white)}
+  .termo-btn.sel-depois{background:var(--salvia);border-color:var(--salvia);color:var(--white)}
+  .termo-resultado{font-size:12px;color:#888;margin-top:4px;min-height:16px}
+
+  /* CAMPOS */
+  .campo-label{font-size:13px;font-weight:bold;color:var(--grafite);margin-bottom:6px;margin-top:18px;display:block}
+  .campo-txt{width:100%;border:1px solid var(--linha);border-radius:8px;padding:10px 12px;font-size:14px;font-family:Arial,sans-serif;background:var(--bg);color:var(--grafite);resize:vertical;outline:none;min-height:72px;transition:border-color .2s}
+  .campo-txt:focus{border-color:var(--terracota)}
+  .campo-linha{width:100%;border:none;border-bottom:2px solid var(--linha);background:transparent;font-size:14px;font-family:Georgia,serif;color:var(--grafite);padding:8px 4px;outline:none;font-style:italic}
+  .campo-linha:focus{border-color:var(--terracota)}
+
+  /* CITAÇÃO */
+  .citacao{background:var(--grafite);border-radius:10px;padding:14px 18px;margin:18px 0;text-align:center}
+  .citacao p{font-family:Georgia,serif;font-style:italic;color:var(--terracota-light);font-size:14px}
+
+  /* PEQUENA VITÓRIA */
+  .vitoria-card{background:linear-gradient(135deg,var(--salvia-light),var(--cream));border:2px solid var(--salvia);border-radius:12px;padding:16px 18px;margin-top:20px}
+  .vitoria-card label{font-size:13px;font-weight:bold;color:var(--salvia);display:block;margin-bottom:8px}
+  .vitoria-card span{font-size:12px;color:#666;display:block;margin-bottom:8px;font-style:italic}
+
+  /* CARTA */
+  .carta-wrap{background:var(--grafite);border-radius:16px;padding:28px 24px;margin-top:32px}
+  .carta-wrap h3{font-family:Georgia,serif;font-size:20px;color:var(--terracota-light);font-style:italic;margin-bottom:8px}
+  .carta-wrap .carta-intro{color:#aaa;font-size:14px;margin-bottom:20px;line-height:1.6}
+  .carta-campo{margin-bottom:18px}
+  .carta-campo label{font-size:13px;font-weight:bold;color:var(--lua, #ccc);display:block;margin-bottom:8px;color:var(--terracota-light)}
+
+  /* COMPROMISSO */
+  .compromisso-card{background:var(--grafite);border-radius:16px;padding:32px 24px;text-align:center;margin-top:32px}
+  .compromisso-card h3{font-family:Georgia,serif;font-size:20px;color:var(--terracota-light);font-style:italic;margin-bottom:12px}
+  .compromisso-card p{color:#aaa;font-size:14px;margin-bottom:24px}
+  .compromisso-btn{background:var(--terracota);color:var(--white);border:none;border-radius:28px;padding:14px 40px;font-size:16px;font-weight:bold;cursor:pointer;transition:background .2s;font-family:Arial}
+  .compromisso-btn:hover{background:#b06a4e}
+  #compromisso-feito{display:none;color:#7fcf7a;font-size:15px;margin-top:16px;font-style:italic}
+  #btn-rever{display:none;background:transparent;color:var(--terracota-light);border:1px solid var(--terracota);border-radius:20px;padding:8px 20px;font-size:13px;cursor:pointer;margin-top:12px;font-family:Arial}
+
+  /* ENCERRAMENTO */
+  .encerramento{background:var(--terracota-light);border-radius:16px;padding:36px 24px;text-align:center;margin-top:32px}
+  .encerramento h3{font-family:Georgia,serif;font-size:22px;color:var(--grafite);font-style:italic;margin-bottom:14px}
+  .encerramento p{color:#5a3a2a;margin-bottom:16px;font-size:15px}
+  .workbook-btn{display:inline-block;background:var(--grafite);color:var(--white);text-decoration:none;padding:14px 36px;border-radius:28px;font-weight:bold;font-size:15px;margin-top:10px;transition:background .2s}
+  .workbook-btn:hover{background:#444}
+  .enc-disclaimer{font-size:12px;color:#888;font-style:italic;margin-top:14px}
+
+  .save-fab{position:fixed;bottom:24px;right:20px;background:var(--grafite);color:var(--white);border:none;border-radius:28px;padding:12px 20px;font-size:13px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.25);z-index:200;transition:background .2s;font-family:Arial}
+  .save-fab:hover{background:var(--terracota)}
+  .print-fab{position:fixed;bottom:24px;right:130px;background:var(--salvia);color:var(--white);border:none;border-radius:28px;padding:12px 20px;font-size:13px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.2);z-index:200;transition:background .2s;font-family:Arial}
+  .print-fab:hover{background:#5e7d5b}
+
+  #cel-overlay{visibility:hidden;opacity:0;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px;transition:opacity .35s,visibility .35s}
+  #cel-overlay.show{visibility:visible;opacity:1}
+  .cel-box{background:var(--white);border-radius:20px;padding:40px 32px;max-width:420px;width:100%;text-align:center}
+  .cel-emoji{font-size:56px;margin-bottom:16px;line-height:1}
+  .cel-box h2{font-family:Georgia,serif;font-size:19px;color:var(--grafite);font-style:italic;margin-bottom:10px;line-height:1.5}
+  .cel-box p{color:#666;font-size:14px;margin-bottom:24px}
+  .cel-btn-ok{background:var(--terracota);color:var(--white);border:none;border-radius:24px;padding:13px 0;font-size:15px;font-weight:bold;cursor:pointer;font-family:Arial;width:100%;margin-bottom:10px}
+  .cel-btn-replay{background:transparent;color:var(--terracota);border:2px solid var(--terracota);border-radius:24px;padding:10px 0;font-size:14px;cursor:pointer;font-family:Arial;width:100%}
+  .confetti-canvas{position:fixed;inset:0;pointer-events:none;z-index:999}
+
+  .quote-block{border-left:3px solid var(--terracota);padding:10px 16px;margin:20px 0;font-style:italic;color:#666;background:var(--cream);border-radius:0 8px 8px 0}
+
+  @media print{
+    .nav,.progress-bar-wrap,.save-fab,.print-fab,#cel-overlay,.confetti-canvas{display:none!important}
+    .header{background:var(--grafite)!important;-webkit-print-color-adjust:exact}
+    .section{padding:24px 16px}
+    body{font-size:13px}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="badge">★ Bônus 5 — Exclusivo do Workbook ★</div>
+  <h1>7 Pequenos Passos Para Voltar a Viver</h1>
+  <p>Um diário de bordo para registrar seus primeiros passos e nunca mais voltar ao ponto zero<br>Ana Luiza Medeiros – Psicóloga Clínica · analuizapsicologa.com.br</p>
+</div>
+
+<nav class="nav">
+  <a href="#intro" class="active">Início</a>
+  <a href="#p1">Prática 1</a>
+  <a href="#p2">Prática 2</a>
+  <a href="#p3">Prática 3</a>
+  <a href="#p4">Prática 4</a>
+  <a href="#p5">Prática 5</a>
+  <a href="#p6">Prática 6</a>
+  <a href="#p7">Prática 7</a>
+  <a href="#carta">Carta</a>
+</nav>
+<div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressBar"></div></div>
+
+<!-- INTRO -->
+<section class="section" id="intro">
+
+  <!-- MARCADOR DE PROGRESSO -->
+  <div class="progresso-wrap">
+    <div class="progresso-titulo">📍 Seu progresso</div>
+    <div class="progresso-linha"><span class="prog-label">Prática 1</span><div class="prog-dots" id="dots-0"></div></div>
+    <div class="progresso-linha"><span class="prog-label">Prática 2</span><div class="prog-dots" id="dots-1"></div></div>
+    <div class="progresso-linha"><span class="prog-label">Prática 3</span><div class="prog-dots" id="dots-2"></div></div>
+    <div class="progresso-linha"><span class="prog-label">Prática 4</span><div class="prog-dots" id="dots-3"></div></div>
+    <div class="progresso-linha"><span class="prog-label">Prática 5</span><div class="prog-dots" id="dots-4"></div></div>
+    <div class="progresso-linha"><span class="prog-label">Prática 6</span><div class="prog-dots" id="dots-5"></div></div>
+    <div class="progresso-linha"><span class="prog-label">Prática 7</span><div class="prog-dots" id="dots-6"></div></div>
+  </div>
+
+  <div class="intro-card">
+    <h2>Antes de Começar</h2>
+    <p>Se você está lendo estas páginas, algo importante já aconteceu.</p>
+    <p>Em algum momento, entre o cansaço, as preocupações e as exigências da vida, você tomou uma decisão silenciosa: parar de apenas sobreviver.</p>
+    <p>Talvez ninguém perceba isso.<br>Talvez pareça apenas mais um exercício.<br>Mais uma página.<br>Mais um registro.</p>
+    <p>Mas não é.</p>
+    <p>Porque toda transformação começa exatamente assim: com um pequeno passo que ninguém vê.</p>
+    <p>Durante anos você aprendeu a cuidar de todos.<br>Agora, por alguns minutos por dia, você vai aprender a cuidar de si mesma.</p>
+    <p>Estas sete práticas não existem para que você se torne perfeita.<br>Existem para que você volte a se encontrar.</p>
+  </div>
+
+  <p style="font-weight:bold;color:var(--grafite);margin:24px 0 12px">Como Usar Este Diário</p>
+  <div class="how-to">
+    <div class="how-step"><div class="how-num">1</div><p><strong>Abra antes de começar cada prática</strong> — Leia o resumo e preencha o termômetro de antes. Isso ajuda seu cérebro a perceber a diferença que a prática causa.</p></div>
+    <div class="how-step"><div class="how-num">2</div><p><strong>Registre logo após terminar</strong> — Enquanto a sensação ainda está fresca. Um minuto é suficiente. Não precisa ser bonito, precisa ser verdadeiro.</p></div>
+    <div class="how-step"><div class="how-num">3</div><p><strong>Seja honesta, não perfeita</strong> — Se um dia foi difícil, escreva isso. O diário não é para mostrar que você é boa nisso. É para mostrar que você está tentando.</p></div>
+    <div class="how-step"><div class="how-num">4</div><p><strong>Releia ao terminar as 7 práticas</strong> — Você vai se surpreender com o que mudou.</p></div>
+  </div>
+</section>
+
+<!-- PRÁTICA 1 -->
+<section class="section" id="p1">
+  <div class="pratica-wrap">
+    <div class="pratica-header">
+      <div class="pratica-num">1</div>
+      <div class="pratica-titulo"><h2>Mapeando o que Sinto</h2><span>Capítulo 1 — A sirene que não desliga</span></div>
+    </div>
+    <div class="pratica-desc">Você observa o que está sentindo agora, sem tentar mudar nada. Apenas nomear já é um ato de cuidado.</div>
+    <p class="pratica-instrucao">Sente-se em um lugar tranquilo. Coloque a mão no peito e respire devagar. Pergunte a si mesma: o que eu estou sentindo agora? Não o que você acha que deveria sentir. O que realmente está aqui. Escreva essa sensação em uma palavra ou frase.</p>
+
+    <div class="data-hora">
+      <input type="text" id="p1-data" placeholder="📅 Data" oninput="autoSave()">
+      <input type="text" id="p1-hora" placeholder="🕐 Horário" oninput="autoSave()">
+    </div>
+
+    <div class="termometro-wrap">
+      <div class="termo-label">Como eu me sinto? — Antes da prática</div>
+      <div class="termo-scale" id="antes-p1"></div>
+      <div class="termo-resultado" id="res-antes-p1"></div>
+    </div>
+    <div class="termometro-wrap">
+      <div class="termo-label">Como eu me sinto? — Depois da prática</div>
+      <div class="termo-scale" id="depois-p1"></div>
+      <div class="termo-resultado" id="res-depois-p1"></div>
+    </div>
+
+    <div class="citacao"><p>"Nomear o que sinto é o primeiro gesto de cuidado comigo mesma."</p></div>
+
+    <label class="campo-label">O que você percebeu ao nomear o que sentia? Isso te surpreendeu de alguma forma?</label>
+    <textarea class="campo-txt" id="p1-q1" oninput="autoSave()" placeholder="Escreva livremente..."></textarea>
+
+    <label class="campo-label">O que eu precisava ouvir hoje que ninguém me disse?</label>
+    <textarea class="campo-txt" id="p1-q2" oninput="autoSave()" placeholder="Escreva livremente..."></textarea>
+
+    <label class="campo-label">Como me sinto agora, em uma palavra ou frase:</label>
+    <input type="text" class="campo-linha" id="p1-q3" oninput="autoSave()" placeholder="Uma palavra ou frase...">
+
+    <div class="vitoria-card">
+      <label>🌱 Pequena Vitória do Dia</label>
+      <span>Reconheça algo pequeno que você fez por si mesma hoje.</span>
+      <input type="text" class="campo-linha" id="p1-vitoria" oninput="autoSave();atualizarProgresso(0)" placeholder="Minha pequena vitória hoje foi...">
+    </div>
+  </div>
+</section>
+
+<!-- PRÁTICA 2 -->
+<section class="section" id="p2">
+  <div class="pratica-wrap">
+    <div class="pratica-header">
+      <div class="pratica-num">2</div>
+      <div class="pratica-titulo"><h2>Reconhecendo Meus Gatilhos</h2><span>Capítulo 1 — A sirene que não desliga</span></div>
+    </div>
+    <div class="pratica-desc">Você identifica uma situação concreta que acionou sua ansiedade hoje ou recentemente, e observa o que aconteceu no seu corpo.</div>
+    <p class="pratica-instrucao">Pense em um momento recente em que a ansiedade apareceu. O que estava acontecendo? Onde você estava, com quem, fazendo o quê? Observe sem julgamento: esse é um gatilho seu. Conhecê-lo é o que vai te dar poder sobre ele.</p>
+
+    <div class="data-hora">
+      <input type="text" id="p2-data" placeholder="📅 Data" oninput="autoSave()">
+      <input type="text" id="p2-hora" placeholder="🕐 Horário" oninput="autoSave()">
+    </div>
+
+    <div class="termometro-wrap">
+      <div class="termo-label">Como eu me sinto? — Antes da prática</div>
+      <div class="termo-scale" id="antes-p2"></div>
+      <div class="termo-resultado" id="res-antes-p2"></div>
+    </div>
+    <div class="termometro-wrap">
+      <div class="termo-label">Como eu me sinto? — Depois da prática</div>
+      <div class="termo-scale" id="depois-p2"></div>
+      <div class="termo-resultado" id="res-depois-p2"></div>
+    </div>
+
+    <div class="citacao"><p>"Quando conheço meus gatilhos, deixo de ser surpreendida por eles."</p></div>
+
+    <label class="campo-label">Qual foi o gatilho que você identificou? O que ele ativou no seu corpo?</label>
+    <textarea class="campo-txt" id="p2-q1" oninput="autoSave()" placeholder="Escreva livremente..."></textarea>
+
+    <label class="campo-label">O que esse gatilho tentou me proteger de sentir?</label>
+    <textarea class="campo-txt" id="p2-q2" oninput="autoSave()" placeholder="Escreva livremente..."></textarea>
+
+    <label class="campo-label">Como me sinto agora, em uma palavra ou frase:</label>
+    <input type="text" class="campo-linha" id="p2-q3" oninput="autoSave()" placeholder="Uma palavra ou frase...">
+
+    <div class="vitoria-card">
+      <label>🌱 Pequena Vitória do Dia</label>
+      <span>Reconheça algo pequeno que você fez por si mesma hoje.</span>
+      <input type="text" class="campo-linha" id="p2-vitoria" oninput="autoSave();atualizarProgresso(1)" placeholder="Minha pequena vitória hoje foi...">
+    </div>
+  </div>
+</section>
+
+<!-- PRÁTICA 3 -->
+<section class="section" id="p3">
+  <div class="pratica-wrap">
+    <div class="pratica-header">
+      <div class="pratica-num">3</div>
+      <div class="pratica-titulo"><h2>Respirando com Consciência</h2><span>Capítulo 2 — Por que seu corpo grita</span></div>
+    </div>
+    <div class="pratica-desc">Você pratica a Respiração Quadrada 4-4-4-4 pela primeira vez de forma intencional e registra o que muda no seu corpo.</div>
+    <p class="pratica-instrucao">Inspire por 4 segundos. Segure por 4. Expire por 4. Segure por 4. Repita por 5 ciclos completos. Enquanto respira, apenas observe: o que muda no seu corpo a cada ciclo?</p>
+
+    <div class="data-hora">
+      <input type="text" id="p3-data" placeholder="📅 Data" oninput="autoSave()">
+      <input type="text" id="p3-hora" placeholder="🕐 Horário" oninput="autoSave()">
+    </div>
+
+    <div class="termometro-wrap">
+      <div class="termo-label">Como eu me sinto? — Antes da prática</div>
+      <div class="termo-scale" id="antes-p3"></div>
+      <div class="termo-resultado" id="res-antes-p3"></div>
+    </div>
+    <div class="termometro-wrap">
+      <div class="termo-label">Como eu me sinto? — Depois da prática</div>
+      <div class="termo-scale" id="depois-p3"></div>
+      <div class="termo-resultado" id="res-depois-p3"></div>
+    </div>
+
+    <div class="citacao"><p>"Minha respiração é sempre minha âncora. Ela sempre estava aqui."</p></div>
+
+    <label class="campo-label">O que você percebeu no seu corpo durante ou depois da respiração?</label>
+    <textarea class="campo-txt" id="p3-q1" oninput="autoSave()" placeholder="Escreva livremente..."></textarea>
+
+    <label class="campo-label">O que minha respiração me mostrou sobre mim?</label>
+    <textarea class="campo-txt" id="p3-q2" oninput="autoSave()" placeholder="Escreva livremente..."></textarea>
+
+    <label class="campo-label">Como me sinto agora, em uma palavra ou frase:</label>
+    <input type="text" class="campo-linha" id="p3-q3" oninput="autoSave()" placeholder="Uma palavra ou frase...">
+
+    <div class="vitoria-card">
+      <label>🌱 Pequena Vitória do Dia</label>
+      <span>Reconheça algo pequeno que você fez por si mesma hoje.</span>
+      <input type="text" class="campo-linha" id="p3-vitoria" oninput="autoSave();atualizarProgresso(2)" placeholder="Minha pequena vitória hoje foi...">
+    </div>
+  </div>
+</section>
+
+<!-- PRÁTICA 4 -->
+<section class="section" id="p4">
+  <div class="pratica-wrap">
+    <div class="pratica-header">
+      <div class="pratica-num">4</div>
+      <div class="pratica-titulo"><h2>Ouvindo o Que Meu Corpo Diz</h2><span>Capítulo 2 — Por que seu corpo grita</span></div>
+    </div>
+    <div class="pratica-desc">Você faz um escaneamento corporal simples, percebendo onde a tensão se instala e o que ela está tentando comunicar.</div>
+    <p class="pratica-instrucao">Feche os olhos. Começando pelos pés, suba lentamente a atenção pelo seu corpo. Onde há tensão? Onde há aperto? Sem tentar mudar nada, apenas observe. O corpo guarda o que a mente ainda não conseguiu dizer.</p>
+
+    <div class="data-hora">
+      <input type="text" id="p4-data" placeholder="📅 Data" oninput="autoSave()">
+      <input type="text" id="p4-hora" placeholder="🕐 Horário" oninput="autoSave()">
+    </div>
+
+    <div class="termometro-wrap">
+      <div class="termo-label">Como eu me sinto? — Antes da prática</div>
+      <div class="termo-scale" id="antes-p4"></div>
+      <div class="termo-resultado" id="res-antes-p4"></div>
+    </div>
+    <div class="termometro-wrap">
+      <div class="termo-label">Como eu me sinto? — Depois da prática</div>
+      <div class="termo-scale" id="depois-p4"></div>
+      <div class="termo-resultado" id="res-depois-p4"></div>
+    </div>
+
+    <div class="citacao"><p>"Meu corpo não é meu inimigo. Ele está tentando me proteger."</p></div>
+
+    <label class="campo-label">Onde no seu corpo a tensão estava? O que você acha que ela está guardando?</label>
+    <textarea class="campo-txt" id="p4-q1" oninput="autoSave()" placeholder="Escreva livremente..."></textarea>
+
+    <label class="campo-label">Se essa tensão pudesse falar, o que ela diria?</label>
+    <textarea class="campo-txt" id="p4-q2" oninput="autoSave()" placeholder="Escreva livremente..."></textarea>
+
+    <label class="campo-label">Como me sinto agora, em uma palavra ou frase:</label>
+    <input type="text" class="campo-linha" id="p4-q3" oninput="autoSave()" placeholder="Uma palavra ou frase...">
+
+    <div class="vitoria-card">
+      <label>🌱 Pequena Vitória do Dia</label>
+      <span>Reconheça algo pequeno que você fez por si mesma hoje.</span>
+      <input type="text" class="campo-linha" id="p4-vitoria" oninput="autoSave();atualizarProgresso(3)" placeholder="Minha pequena vitória hoje foi...">
+    </div>
+  </div>
+</section>
+
+<!-- PRÁTICA 5 -->
+<section class="section" id="p5">
+  <div class="pratica-wrap">
+    <div class="pratica-header">
+      <div class="pratica-num">5</div>
+      <div class="pratica-titulo"><h2>Questionando Meus Pensamentos</h2><span>Capítulo 5 — A voz que mente</span></div>
+    </div>
+    <div class="pratica-desc">Você identifica um pensamento ansioso recente e o questiona usando a técnica da TCC: isso é fato ou interpretação?</div>
+    <p class="pratica-instrucao">Pense em um pensamento que apareceu quando a ansiedade chegou. Agora pergunte: isso é um fato ou é uma história que minha mente criou? Qual seria a versão mais equilibrada desse pensamento?</p>
+
+    <div class="data-hora">
+      <input type="text" id="p5-data" placeholder="📅 Data" oninput="autoSave()">
+      <input type="text" id="p5-hora" placeholder="🕐 Horário" oninput="autoSave()">
+    </div>
+
+    <div class="termometro-wrap">
+      <div class="termo-label">Como eu me sinto? — Antes da prática</div>
+      <div class="termo-scale" id="antes-p5"></div>
+      <div class="termo-resultado" id="res-antes-p5"></div>
+    </div>
+    <div class="termometro-wrap">
+      <div class="termo-label">Como eu me sinto? — Depois da prática</div>
+      <div class="termo-scale" id="depois-p5"></div>
+      <div class="termo-resultado" id="res-depois-p5"></div>
+    </div>
+
+    <div class="citacao"><p>"A voz que me assusta muitas vezes mente. Eu posso questioná-la."</p></div>
+
+    <label class="campo-label">Qual foi o pensamento? E qual foi a versão mais equilibrada que você encontrou?</label>
+    <textarea class="campo-txt" id="p5-q1" oninput="autoSave()" placeholder="Escreva livremente..."></textarea>
+
+    <label class="campo-label">O que eu escolheria acreditar se a ansiedade não estivesse falando por mim?</label>
+    <textarea class="campo-txt" id="p5-q2" oninput="autoSave()" placeholder="Escreva livremente..."></textarea>
+
+    <label class="campo-label">Como me sinto agora, em uma palavra ou frase:</label>
+    <input type="text" class="campo-linha" id="p5-q3" oninput="autoSave()" placeholder="Uma palavra ou frase...">
+
+    <div class="vitoria-card">
+      <label>🌱 Pequena Vitória do Dia</label>
+      <span>Reconheça algo pequeno que você fez por si mesma hoje.</span>
+      <input type="text" class="campo-linha" id="p5-vitoria" oninput="autoSave();atualizarProgresso(4)" placeholder="Minha pequena vitória hoje foi...">
+    </div>
+  </div>
+</section>
+
+<!-- PRÁTICA 6 -->
+<section class="section" id="p6">
+  <div class="pratica-wrap">
+    <div class="pratica-header">
+      <div class="pratica-num">6</div>
+      <div class="pratica-titulo"><h2>Ancorando no Momento Presente</h2><span>Capítulo 6 — Quando ela chegar</span></div>
+    </div>
+    <div class="pratica-desc">Você pratica a técnica de ancoragem sensorial 5-4-3-2-1 e registra como ela muda sua relação com o momento presente.</div>
+    <p class="pratica-instrucao">Observe 5 coisas que você pode ver. Perceba 4 sons ao seu redor. Sinta 3 sensações físicas. Identifique 2 cheiros. Perceba 1 sensação interna. Você acaba de voltar para o único lugar onde a ansiedade não tem poder: o momento presente.</p>
+
+    <div class="data-hora">
+      <input type="text" id="p6-data" placeholder="📅 Data" oninput="autoSave()">
+      <input type="text" id="p6-hora" placeholder="🕐 Horário" oninput="autoSave()">
+    </div>
+
+    <div class="termometro-wrap">
+      <div class="termo-label">Como eu me sinto? — Antes da prática</div>
+      <div class="termo-scale" id="antes-p6"></div>
+      <div class="termo-resultado" id="res-antes-p6"></div>
+    </div>
+    <div class="termometro-wrap">
+      <div class="termo-label">Como eu me sinto? — Depois da prática</div>
+      <div class="termo-scale" id="depois-p6"></div>
+      <div class="termo-resultado" id="res-depois-p6"></div>
+    </div>
+
+    <div class="citacao"><p>"Quando estou aqui, agora, a ansiedade perde o chão."</p></div>
+
+    <label class="campo-label">Como você se sentiu antes e depois da ancoragem? O que mudou?</label>
+    <textarea class="campo-txt" id="p6-q1" oninput="autoSave()" placeholder="Escreva livremente..."></textarea>
+
+    <label class="campo-label">O que existe neste momento que merece minha atenção?</label>
+    <textarea class="campo-txt" id="p6-q2" oninput="autoSave()" placeholder="Escreva livremente..."></textarea>
+
+    <label class="campo-label">Como me sinto agora, em uma palavra ou frase:</label>
+    <input type="text" class="campo-linha" id="p6-q3" oninput="autoSave()" placeholder="Uma palavra ou frase...">
+
+    <div class="vitoria-card">
+      <label>🌱 Pequena Vitória do Dia</label>
+      <span>Reconheça algo pequeno que você fez por si mesma hoje.</span>
+      <input type="text" class="campo-linha" id="p6-vitoria" oninput="autoSave();atualizarProgresso(5)" placeholder="Minha pequena vitória hoje foi...">
+    </div>
+  </div>
+</section>
+
+<!-- PRÁTICA 7 -->
+<section class="section" id="p7">
+  <div class="pratica-wrap">
+    <div class="pratica-header">
+      <div class="pratica-num">7</div>
+      <div class="pratica-titulo"><h2>Reconhecendo Meu Progresso</h2><span>Capítulo 9 — Você já não está mais onde começou</span></div>
+    </div>
+    <div class="pratica-desc">Você olha para trás, para as seis práticas anteriores, e reconhece o que mudou. Este é o passo mais importante de todos.</div>
+    <p class="pratica-instrucao">Abra este diário nas páginas anteriores. Leia o que você escreveu. Observe os termômetros, as palavras, os sentimentos que você registrou. Agora pergunte: quem era a pessoa que começou esta primeira prática? E quem é a pessoa que chegou até aqui?</p>
+
+    <div class="data-hora">
+      <input type="text" id="p7-data" placeholder="📅 Data" oninput="autoSave()">
+      <input type="text" id="p7-hora" placeholder="🕐 Horário" oninput="autoSave()">
+    </div>
+
+    <div class="termometro-wrap">
+      <div class="termo-label">Como eu me sinto? — Antes da prática</div>
+      <div class="termo-scale" id="antes-p7"></div>
+      <div class="termo-resultado" id="res-antes-p7"></div>
+    </div>
+    <div class="termometro-wrap">
+      <div class="termo-label">Como eu me sinto? — Depois da prática</div>
+      <div class="termo-scale" id="depois-p7"></div>
+      <div class="termo-resultado" id="res-depois-p7"></div>
+    </div>
+
+    <div class="citacao"><p>"Eu já não sou mais quem era quando comecei. E isso é muito."</p></div>
+
+    <label class="campo-label">O que mudou em você ao longo dessas sete práticas? O que você quer continuar?</label>
+    <textarea class="campo-txt" id="p7-q1" oninput="autoSave()" placeholder="Escreva livremente..."></textarea>
+
+    <label class="campo-label">Qual é a maior prova de que eu já não sou a mesma pessoa que começou?</label>
+    <textarea class="campo-txt" id="p7-q2" oninput="autoSave()" placeholder="Escreva livremente..."></textarea>
+
+    <label class="campo-label">Como me sinto agora, em uma palavra ou frase:</label>
+    <input type="text" class="campo-linha" id="p7-q3" oninput="autoSave()" placeholder="Uma palavra ou frase...">
+
+    <div class="vitoria-card">
+      <label>🌱 Pequena Vitória do Dia</label>
+      <span>Reconheça algo pequeno que você fez por si mesma hoje.</span>
+      <input type="text" class="campo-linha" id="p7-vitoria" oninput="autoSave();atualizarProgresso(6)" placeholder="Minha pequena vitória hoje foi...">
+    </div>
+  </div>
+
+  <!-- CAMPOS FINAIS DA PRÁTICA 7 -->
+  <div style="background:var(--cream);border-radius:12px;padding:22px 20px;margin-top:24px">
+    <label class="campo-label" style="margin-top:0">A prática que mais me marcou foi:</label>
+    <textarea class="campo-txt" id="p7-marcou" oninput="autoSave()" placeholder="Escreva livremente..."></textarea>
+    <label class="campo-label">O que percebi sobre mim mesma que não sabia antes:</label>
+    <textarea class="campo-txt" id="p7-percebi" oninput="autoSave()" placeholder="Escreva livremente..."></textarea>
+    <label class="campo-label">O que quero levar para as próximas semanas do workbook:</label>
+    <textarea class="campo-txt" id="p7-levar" oninput="autoSave()" placeholder="Escreva livremente..."></textarea>
+  </div>
+</section>
+
+<!-- CARTA PARA MIM MESMA -->
+<section class="section" id="carta">
+  <div class="carta-wrap">
+    <h3>💌 Carta Para Mim Mesma</h3>
+    <p class="carta-intro">Antes de seguir para os próximos capítulos do workbook, escreva uma mensagem para a mulher que iniciou esta jornada. Não precisa ser perfeita. Precisa ser verdadeira.</p>
+
+    <div class="carta-campo">
+      <label>O que você gostaria que ela soubesse?</label>
+      <textarea class="campo-txt" id="carta-1" rows="4" oninput="autoSave()" placeholder="Escreva livremente..."></textarea>
+    </div>
+    <div class="carta-campo">
+      <label>O que você percebe hoje que não conseguia perceber antes?</label>
+      <textarea class="campo-txt" id="carta-2" rows="4" oninput="autoSave()" placeholder="Escreva livremente..."></textarea>
+    </div>
+    <div class="carta-campo">
+      <label>O que mudou?</label>
+      <textarea class="campo-txt" id="carta-3" rows="4" oninput="autoSave()" placeholder="Escreva livremente..."></textarea>
+    </div>
+    <div class="carta-campo">
+      <label>O que merece ser celebrado?</label>
+      <textarea class="campo-txt" id="carta-4" rows="4" oninput="autoSave()" placeholder="Escreva livremente..."></textarea>
+    </div>
+  </div>
+
+  <!-- COMPROMISSO -->
+  <div class="compromisso-card">
+    <h3>Parabéns Por Ter Chegado Aqui!</h3>
+    <p>Ao completar estas sete práticas, você demonstrou coragem e compromisso com o seu bem-estar emocional. Continue firme na sua jornada pelas 41 práticas do workbook.</p>
+    <button class="compromisso-btn" onclick="celebrar()">✨ Confirmo meu compromisso</button>
+    <div id="compromisso-feito">✓ Compromisso assumido com coragem e amor próprio.</div>
+    <button id="btn-rever" onclick="abrirCel()">↺ Rever celebração</button>
+  </div>
+
+  <!-- ENCERRAMENTO -->
+  <div class="encerramento">
+    <h3>Você já não é mais quem era na página 1.</h3>
+    <p>Completar sete práticas parece pouco. Mas para o seu cérebro, sete dias de presença e registro representam algo muito maior: a prova de que você é capaz de começar e continuar.</p>
+    <p><em>As próximas práticas estão esperando por você dentro do workbook.</em></p>
+    <a class="workbook-btn" href="https://analuizapsicologa.com.br" target="_blank">→ Acessar o Workbook Completo</a>
+    <p class="enc-disclaimer">Este material é um complemento terapêutico e não substitui acompanhamento psicológico individual.</p>
+  </div>
+</section>
+
+<button class="save-fab" id="saveFab" onclick="manualSave()">💾 Salvar</button>
+<button class="print-fab" onclick="window.print()">🖨 Imprimir PDF</button>
+
+<canvas class="confetti-canvas" id="confettiCanvas"></canvas>
+<div id="cel-overlay">
+  <div class="cel-box">
+    <div class="cel-emoji">🌱</div>
+    <h2 id="cel-texto"></h2>
+    <p id="cel-sub">Você já não é mais quem era quando começou. E isso é muito.</p>
+    <button class="cel-btn-ok" onclick="fecharCel()">✓ Continuar</button>
+    <button class="cel-btn-replay" onclick="abrirCel()">↺ Rever celebração</button>
+  </div>
+</div>
+
+<script>
+// TERMÔMETROS
+const PRATICAS = ['p1','p2','p3','p4','p5','p6','p7'];
+const termoData = {};
+
+function buildTermometros() {
+  PRATICAS.forEach(p => {
+    ['antes','depois'].forEach(tipo => {
+      const el = document.getElementById(`${tipo}-${p}`);
+      if (!el) return;
+      for (let i=0; i<=10; i++) {
+        const btn = document.createElement('button');
+        btn.className = 'termo-btn';
+        btn.textContent = i;
+        btn.onclick = () => selecionarTermo(p, tipo, i, btn);
+        el.appendChild(btn);
+      }
+    });
+  });
+}
+
+function selecionarTermo(pratica, tipo, val, btn) {
+  const key = `${tipo}-${pratica}`;
+  termoData[key] = val;
+  const container = document.getElementById(`${tipo}-${pratica}`);
+  container.querySelectorAll('.termo-btn').forEach(b => b.classList.remove('sel-antes','sel-depois'));
+  btn.classList.add(tipo === 'antes' ? 'sel-antes' : 'sel-depois');
+  const nivel = val <= 2 ? 'Tranquila' : val <= 4 ? 'Leve' : val <= 6 ? 'Moderada' : val <= 8 ? 'Intensa' : 'Muito intensa';
+  document.getElementById(`res-${tipo}-${pratica}`).textContent = `Nível ${val} — ${nivel}`;
+  autoSave();
+}
+
+// MARCADOR DE PROGRESSO
+function buildProgresso() {
+  for (let p=0; p<7; p++) {
+    const el = document.getElementById(`dots-${p}`);
+    if (!el) return;
+    el.innerHTML = '';
+    for (let d=0; d<7; d++) {
+      const dot = document.createElement('div');
+      dot.className = 'prog-dot' + (d < p ? ' feita' : d === p ? ' atual' : '');
+      el.appendChild(dot);
+    }
+  }
+}
+
+function atualizarProgresso(praticaIdx) {
+  for (let p=0; p<7; p++) {
+    const el = document.getElementById(`dots-${p}`);
+    if (!el) continue;
+    const dots = el.querySelectorAll('.prog-dot');
+    dots.forEach((d, i) => {
+      d.className = 'prog-dot' + (i < praticaIdx+1 ? ' feita' : i === praticaIdx+1 ? ' atual' : '');
+    });
+  }
+}
+
+// CELEBRATION
+const FRASES = [
+  "Você acabou de dar o passo mais importante. O cuidado com você mesma começa agora.",
+  "Coragem não é a ausência do medo. É decidir que você vale mais do que ele.",
+  "Cada pequeno passo na direção certa muda o destino de toda uma jornada.",
+  "Você não precisa estar completamente bem para começar. Você só precisa começar."
+];
+
+function celebrar() {
+  document.getElementById('cel-texto').textContent = FRASES[Math.floor(Math.random()*FRASES.length)];
+  document.getElementById('compromisso-feito').style.display = 'block';
+  document.getElementById('btn-rever').style.display = 'inline-block';
+  abrirCel();
+}
+function abrirCel() { document.getElementById('cel-overlay').classList.add('show'); lancarConfete(); tocarJingle(); }
+function fecharCel() { document.getElementById('cel-overlay').classList.remove('show'); }
+
+// SAVE
+const SAVE_KEY = 'bonus5_praticas';
+const CAMPOS_TEXT = ['p1-data','p1-hora','p1-q1','p1-q2','p1-q3','p1-vitoria','p2-data','p2-hora','p2-q1','p2-q2','p2-q3','p2-vitoria','p3-data','p3-hora','p3-q1','p3-q2','p3-q3','p3-vitoria','p4-data','p4-hora','p4-q1','p4-q2','p4-q3','p4-vitoria','p5-data','p5-hora','p5-q1','p5-q2','p5-q3','p5-vitoria','p6-data','p6-hora','p6-q1','p6-q2','p6-q3','p6-vitoria','p7-data','p7-hora','p7-q1','p7-q2','p7-q3','p7-vitoria','p7-marcou','p7-percebi','p7-levar','carta-1','carta-2','carta-3','carta-4'];
+
+function gatherData() {
+  const d = { termoData };
+  CAMPOS_TEXT.forEach(id => { const el=document.getElementById(id); if(el) d[id]=el.value; });
+  return d;
+}
+
+function restoreData(d) {
+  CAMPOS_TEXT.forEach(id => { const el=document.getElementById(id); if(el&&d[id]!==undefined) el.value=d[id]; });
+  if (d.termoData) {
+    Object.entries(d.termoData).forEach(([key, val]) => {
+      const [tipo, pratica] = key.split('-');
+      const container = document.getElementById(`${tipo}-${pratica}`);
+      if (container) {
+        const btns = container.querySelectorAll('.termo-btn');
+        if (btns[val]) {
+          btns[val].classList.add(tipo === 'antes' ? 'sel-antes' : 'sel-depois');
+          const nivel = val <= 2 ? 'Tranquila' : val <= 4 ? 'Leve' : val <= 6 ? 'Moderada' : val <= 8 ? 'Intensa' : 'Muito intensa';
+          const resEl = document.getElementById(`res-${tipo}-${pratica}`);
+          if (resEl) resEl.textContent = `Nível ${val} — ${nivel}`;
+        }
+      }
+    });
+  }
+}
+
+let saveTO=null;
+function autoSave() {
+  clearTimeout(saveTO);
+  saveTO=setTimeout(()=>{
+    localStorage.setItem(SAVE_KEY,JSON.stringify(gatherData()));
+    const n=new Date();
+    document.getElementById('saveFab').textContent=`✓ Salvo às ${n.getHours().toString().padStart(2,'0')}:${n.getMinutes().toString().padStart(2,'0')}`;
+    setTimeout(()=>document.getElementById('saveFab').textContent='💾 Salvar',3000);
+  },800);
+}
+function manualSave() {
+  localStorage.setItem(SAVE_KEY,JSON.stringify(gatherData()));
+  const n=new Date();
+  document.getElementById('saveFab').textContent=`✓ Salvo às ${n.getHours().toString().padStart(2,'0')}:${n.getMinutes().toString().padStart(2,'0')}`;
+  setTimeout(()=>document.getElementById('saveFab').textContent='💾 Salvar',3000);
+}
+
+// CONFETTI
+function lancarConfete() {
+  const canvas=document.getElementById('confettiCanvas');
+  const ctx=canvas.getContext('2d');
+  canvas.width=window.innerWidth; canvas.height=window.innerHeight;
+  const colors=['#C4785A','#7A9B76','#F5EFE6','#F0DDD5','#E8F0E6','#fff'];
+  const p=Array.from({length:150},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height-canvas.height,r:Math.random()*7+3,c:colors[Math.floor(Math.random()*colors.length)],t:Math.random()*10-5,ta:0,ts:Math.random()*.1+.05}));
+  let f=0;
+  (function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    p.forEach(q=>{ctx.beginPath();ctx.lineWidth=q.r;ctx.strokeStyle=q.c;ctx.moveTo(q.x+q.t+q.r/4,q.y);ctx.lineTo(q.x+q.t,q.y+q.t+q.r/4);ctx.stroke();});
+    p.forEach(q=>{q.ta+=q.ts;q.y+=(Math.cos(f/20)+1+q.r/2)*1.5;q.t=Math.sin(q.ta)*12;if(q.y>canvas.height){q.y=-10;q.x=Math.random()*canvas.width;}});
+    f++;if(f<260)requestAnimationFrame(draw);else ctx.clearRect(0,0,canvas.width,canvas.height);
+  })();
+}
+function tocarJingle() {
+  try {
+    const c=new (window.AudioContext||window.webkitAudioContext)();
+    [523,659,784,1047,784,659,523].reduce((t,freq)=>{
+      const o=c.createOscillator(),g=c.createGain();
+      o.connect(g);g.connect(c.destination);
+      o.frequency.value=freq;o.type='sine';
+      g.gain.setValueAtTime(0.15,t);g.gain.exponentialRampToValueAtTime(0.001,t+.3);
+      o.start(t);o.stop(t+.3);return t+.2;
+    },c.currentTime);
+  }catch(e){}
+}
+
+// NAV + PROGRESS BAR
+const secs=document.querySelectorAll('.section');
+const navAs=document.querySelectorAll('.nav a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+  navAs.forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+cur)a.classList.add('active');});
+  const dh=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('progressBar').style.width=(dh>0?window.scrollY/dh*100:0)+'%';
+});
+
+// INIT
+window.addEventListener('load',()=>{
+  buildTermometros();
+  buildProgresso();
+  try{const s=localStorage.getItem(SAVE_KEY);if(s)restoreData(JSON.parse(s));}catch(e){}
+});
+</script>
+</body>
+</html>
